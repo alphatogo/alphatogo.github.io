@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zhiyi Lyu</title>
+<meta name="description" content="Zhiyi Lyu is a Ph.D. student at Nanyang Technological University working on LLM post-training, agent reinforcement learning, tool use, and deliberative search.">
+
+<meta property="og:title" content="Zhiyi Lyu">
+<meta property="og:description" content="Ph.D. student at NTU. LLM post-training, agent RL, tool use, deliberative search.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alphatogo.github.io/">
+<meta property="og:image" content="https://alphatogo.github.io/assets/avatar.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#FCFCFA;
+  --ink:#16181C;
+  --muted:#6A707B;
+  --faint:#9AA0AA;
+  --rule:#E5E3DE;
+  --accent:#1B3FA0;
+  --tint:#F2F1ED;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#15171A; --ink:#E8E7E3; --muted:#9BA1AB; --faint:#6E747E;
+    --rule:#2B2E34; --accent:#8FAEF5; --tint:#1D2025;
+  }
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;
+  font-size:15px;line-height:1.62;
+  font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent) 30%,transparent)}
+a:hover{border-bottom-color:var(--accent)}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+img{max-width:100%;display:block}
+
+.page{
+  max-width:1120px;margin:0 auto;
+  padding:clamp(2.5rem,6vw,5rem) clamp(1.3rem,5vw,3rem) 5rem;
+  display:grid;grid-template-columns:250px minmax(0,1fr);
+  gap:clamp(2.2rem,5vw,4.5rem);align-items:start;
+}
+
+/* ---------------- 左栏 ---------------- */
+.rail{position:sticky;top:clamp(2.5rem,6vw,5rem)}
+.avatar{width:100%;max-width:190px;border-radius:3px;margin-bottom:1.3rem;background:var(--tint)}
+
+.name{
+  font-family:Newsreader,Georgia,serif;font-weight:400;
+  font-size:2rem;line-height:1.1;letter-spacing:-.012em;margin:0 0 .15rem;
+}
+.name-cn{font-size:.95rem;color:var(--muted);margin:0 0 .8rem}
+.role{margin:0;font-size:.9rem;line-height:1.5;color:var(--muted)}
+.role strong{color:var(--ink);font-weight:500}
+
+.contact{list-style:none;margin:1.3rem 0 0;padding:0;font-size:.88rem}
+.contact li{margin-bottom:.3rem}
+
+nav{margin-top:1.9rem;border-top:1px solid var(--rule);padding-top:1rem}
+nav ol{list-style:none;margin:0;padding:0;font-size:.87rem}
+nav a{
+  color:var(--muted);border:0;display:inline-block;padding:.08rem 0 .08rem .7rem;
+  border-left:2px solid transparent;margin-left:-.7rem;
+}
+nav a:hover{color:var(--ink)}
+nav a[aria-current="true"]{color:var(--ink);border-left-color:var(--accent)}
+
+/* ---------------- 右栏 ---------------- */
+.main{max-width:700px}
+section{margin-bottom:3.2rem;scroll-margin-top:1.5rem}
+h2{
+  font-family:Newsreader,Georgia,serif;font-weight:500;font-size:1.28rem;
+  margin:0 0 1.35rem;padding-bottom:.45rem;border-bottom:1px solid var(--rule);
+}
+p{margin:0 0 .9rem}
+p:last-child{margin-bottom:0}
+
+#about p:first-of-type{
+  font-family:Newsreader,Georgia,serif;font-size:1.13rem;line-height:1.55;
+}
+.interests{margin:.4rem 0 0;padding-left:1.15rem}
+.interests li{margin-bottom:.3rem}
+
+/* ---------------- News ---------------- */
+.news{list-style:none;margin:0;padding:0;font-size:.93rem}
+.news li{display:grid;grid-template-columns:5.6rem 1fr;gap:.3rem 1rem;margin-bottom:.5rem}
+.news time{color:var(--faint);font-size:.87rem;white-space:nowrap}
+.news-more{margin-top:.9rem;font-size:.87rem;color:var(--muted)}
+
+/* ---------------- Publications ---------------- */
+.pub{margin-bottom:2rem}
+.pub:last-child{margin-bottom:0}
+
+.venue{
+  display:inline-block;font-size:.78rem;color:var(--muted);
+  border:1px solid var(--rule);border-radius:2px;padding:.05rem .4rem;margin-bottom:.35rem;
+}
+.venue.accepted{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 35%,transparent)}
+.pub h3{font-family:Newsreader,Georgia,serif;font-weight:500;font-size:1.07rem;line-height:1.35;margin:0 0 .25rem}
+.pub h3 a{border-bottom-color:transparent}
+.pub h3 a:hover{border-bottom-color:var(--accent)}
+.authors{font-size:.87rem;color:var(--muted);margin:0 0 .3rem}
+.authors b{color:var(--ink);font-weight:600}
+.tldr{font-size:.91rem;margin:0}
+.links{margin:.4rem 0 0;font-size:.84rem;display:flex;gap:.9rem;flex-wrap:wrap}
+.note{font-size:.85rem;color:var(--muted);margin:0 0 1.3rem}
+
+/* ---------------- 列表类 ---------------- */
+.entry{display:grid;grid-template-columns:1fr auto;gap:.2rem 1.5rem;margin-bottom:1.4rem}
+.entry:last-child{margin-bottom:0}
+.entry h3{margin:0;font-size:.98rem;font-weight:600;line-height:1.4}
+.entry h3 span{font-weight:400;color:var(--muted)}
+.entry .when{font-size:.84rem;color:var(--faint);white-space:nowrap;text-align:right}
+.entry p{grid-column:1/-1;margin:.1rem 0 0;font-size:.91rem;color:var(--muted)}
+
+.plain{margin:0;padding-left:1.15rem;font-size:.93rem}
+.plain li{margin-bottom:.35rem}
+.dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.5rem;font-size:.93rem}
+.dl dt{color:var(--muted);white-space:nowrap}
+.dl dd{margin:0}
+
+footer{
+  grid-column:1/-1;margin-top:1.5rem;padding-top:1.3rem;
+  border-top:1px solid var(--rule);font-size:.82rem;color:var(--faint);
+}
+
+@media (max-width:830px){
+  .page{grid-template-columns:1fr;gap:2.6rem}
+  .rail{position:static;display:grid;grid-template-columns:130px 1fr;gap:1.4rem;align-items:start}
+  .avatar{max-width:130px;margin-bottom:0}
+  .rail-text{grid-column:2}
+  .contact{margin-top:1rem}
+  nav{display:none}
+  .news li{grid-template-columns:1fr;gap:0}
+}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+
+<body>
+<div class="page">
+
+  <header class="rail">
+    <img class="avatar" src="assets/avatar.jpg" alt="Zhiyi Lyu">
+
+    <div class="rail-text">
+      <h1 class="name">Zhiyi Lyu</h1>
+      <p class="name-cn">吕帜一</p>
+      <p class="role">
+        Ph.D. Student, <strong>Nanyang Technological University</strong><br>
+        Advised by <a href="https://personal.ntu.edu.sg/boan/">Prof. Bo An</a><br>
+        Singapore
+      </p>
+
+      <ul class="contact">
+        <li><a href="mailto:zhiyi.lyu@ntu.edu.sg">zhiyi.lyu [at] ntu.edu.sg</a></li>
+        <li><a href="https://scholar.google.com/citations?user=OJBfthMAAAAJ">Google Scholar</a></li>
+      </ul>
+    </div>
+
+    <nav aria-label="Sections">
+      <ol>
+        <li><a href="#about">About</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#awards">Honors</a></li>
+      </ol>
+    </nav>
+  </header>
+
+  <main class="main">
+
+    <section id="about">
+      <h2>About me</h2>
+      <p>
+        I am a Ph.D. student at the College of Computing and Data Science, Nanyang Technological
+        University, advised by <a href="https://personal.ntu.edu.sg/boan/">Prof. Bo An</a>.
+        I received my B.S. in Computer Science from Xidian University.
+      </p>
+      <p>
+        I work on post-training language-model agents. Most of my recent work starts from the same
+        practical constraint: real agent logs are plentiful, but online rollouts, reward models,
+        and task verifiers usually are not. Concretely, I am interested in
+      </p>
+      <ul class="interests">
+        <li>agent post-training from raw, unlabelled interaction trajectories;</li>
+        <li>credit assignment at the token and step level for tool-use agents;</li>
+        <li>deliberative search and iterative revision as an alternative to one-shot generation;</li>
+        <li>taking these methods into industrial decision-making systems.</li>
+      </ul>
+      <p style="margin-top:.9rem">
+        I am always happy to talk about potential collaborations — feel free to reach out by email.
+      </p>
+    </section>
+
+    <section id="news">
+      <h2>News</h2>
+      <!-- 日期是我按会议通知时间推的，请核对后改准 -->
+      <ul class="news">
+        <!-- 日期改成 AgentBrew 实际放出来的月份 -->
+        <li><time>2026/05</time><span><b>AgentBrew</b> is out, on learning tool-use agents from raw real-world trajectories.</span></li>
+        <li><time>2026/01</time><span><b>LBM</b> is accepted to <b>WWW 2026</b>, on hierarchical LLM agents for industrial auto-bidding.</span></li>
+        <li><time>2025/09</time><span><b>ReLoc</b> is accepted to <b>NeurIPS 2025</b>, in collaboration with Alibaba Tongyi Lab.</span></li>
+        <li><time>2025/08</time><span>Joined Kuaishou Technology as a research intern, working on agent post-training.</span></li>
+        <li><time>2025/05</time><span><b>CoSo</b> is accepted to <b>ICML 2025</b>.</span></li>
+        <li><time>2024/06</time><span><b>Q*</b> is released on arXiv, with Skywork AI.</span></li>
+        <li><time>2023/09</time><span>First paper accepted to <b>NeurIPS 2023</b>.</span></li>
+      </ul>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+      <p class="note">* denotes equal contribution. See also my <a href="https://scholar.google.com/citations?user=OJBfthMAAAAJ">Google Scholar</a>.</p>
+
+      <article class="pub">
+        <div>
+          <span class="venue">Under review, NeurIPS 2026</span>
+          <h3>AgentBrew: Offline Tool-Use Agent Learning from Raw Real-World Trajectories</h3>
+          <p class="authors"><b>Zhiyi Lyu</b>, Yewen Li, Longtao Zheng, et al.</p>
+          <p class="tldr">
+            AgentBrew post-trains tool-use agents from raw interaction logs with no online rollouts,
+            external rewards, or task verifiers. Retrospective task inference plus PMI-based step-level
+            credit assignment turns noisy trajectories into weighted SFT supervision.
+          </p>
+          <!-- 论文/代码上线后取消注释
+          <p class="links"><a href="#">Paper</a><a href="#">Code</a></p>
+          -->
+        </div>
+      </article>
+
+      <article class="pub">
+        <div>
+          <span class="venue accepted">WWW 2026</span>
+          <h3>LBM: Hierarchical Large Auto-Bidding Model via Reasoning and Acting</h3>
+          <p class="authors">Yewen Li*, <b>Zhiyi Lyu</b>*, Peng Jiang, Qingpeng Cai, Fei Pan, Bo An</p>
+          <p class="tldr">
+            Separating high-level reasoning from precise numerical action lets an LLM agent operate in
+            continuous decision spaces; the reasoning module is trained with offline RL, avoiding
+            simulator and real-world rollouts.
+          </p>
+          <!-- <p class="links"><a href="#">Paper</a></p> -->
+        </div>
+      </article>
+
+      <article class="pub">
+        <div>
+          <span class="venue accepted">NeurIPS 2025</span>
+          <h3>Let's Revise Step-by-Step: A Unified Local Search Framework for Code Generation with LLMs</h3>
+          <p class="authors"><b>Zhiyi Lyu</b>, Jianguo Huang, Yanchen Deng, Steven Hoi, Bo An</p>
+          <p class="tldr">
+            Code generation as anytime local search over programs. A revision reward model ranks
+            candidates by revision distance, guiding both hill climbing and genetic search on
+            LiveCodeBench and TACO. In collaboration with Alibaba Tongyi Lab.
+          </p>
+          <!-- <p class="links"><a href="#">Paper</a><a href="#">Code</a></p> -->
+        </div>
+      </article>
+
+      <article class="pub">
+        <div>
+          <span class="venue accepted">ICML 2025</span>
+          <h3>Towards Efficient Online Tuning of VLM Agents via Counterfactual Soft Reinforcement Learning</h3>
+          <p class="authors">Lang Feng, Weihao Tan, <b>Zhiyi Lyu</b>, Longtao Zheng, Haiyang Xu, Ming Yan, Fei Huang, Bo An</p>
+          <p class="tldr">
+            CoSo measures each token's causal influence on the executable action and concentrates
+            exploration on action-critical tokens, with convergence and policy-improvement guarantees.
+          </p>
+          <p class="links"><a href="https://arxiv.org/abs/2505.03792">Paper</a><a href="https://github.com/langfengQ/CoSo">Code</a></p>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div>
+          <span class="venue">Preprint, arXiv 2024</span>
+          <h3><a href="https://arxiv.org/abs/2406.14283">Q*: Improving Multi-step Reasoning for LLMs with Deliberative Planning</a></h3>
+          <p class="authors">Chaojie Wang*, Yanchen Deng*, <b>Zhiyi Lyu</b>, Liang Zeng, Jujie He, Shuicheng Yan, Bo An</p>
+          <p class="tldr">
+            Q* casts multi-step reasoning as heuristic search and learns a plug-and-play Q-value model
+            to score the next reasoning step, guiding decoding without fine-tuning the LLM for the task.
+            Evaluated on GSM8K, MATH, and MBPP. With Skywork AI.
+          </p>
+          <p class="links"><a href="https://arxiv.org/abs/2406.14283">Paper</a></p>
+        </div>
+      </article>
+
+      <article class="pub">
+        <div>
+          <span class="venue accepted">NeurIPS 2023</span>
+          <h3>Few-shot Generation via Recalling Brain-Inspired Episodic-Semantic Memory</h3>
+          <p class="authors">Zhibin Duan, <b>Zhiyi Lv</b>, Chaojie Wang, Bo Chen, Bo An, Mingyuan Zhou</p>
+          <p class="tldr">
+            A variational structured memory that stores semantic concepts alongside sample-specific
+            episodic memories, with structured recall for rapid adaptation to unseen generation tasks.
+          </p>
+          <!-- <p class="links"><a href="#">Paper</a></p> -->
+        </div>
+      </article>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="entry">
+        <h3>Kuaishou Technology <span>— Research Intern</span></h3>
+        <p class="when">Aug 2025 – Jul 2026</p>
+        <p>Agent post-training for tool use and decision making. Led the AgentBrew training pipeline
+        and the reasoning module of LBM, working with
+        <a href="https://qingpengcai.github.io/">Dr. Qingpeng Cai</a> and
+        <a href="https://scholar.google.com/citations?user=W5796yEAAAAJ">Dr. Yewen Li</a>.</p>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="entry">
+        <h3>Nanyang Technological University <span>— Ph.D. in Computer Science</span></h3>
+        <p class="when">Singapore</p>
+        <p>College of Computing and Data Science. Advisor: Prof. Bo An.</p>
+      </div>
+      <div class="entry">
+        <h3>Xidian University <span>— B.S. in Computer Science and Technology</span></h3>
+        <p class="when">2020 – 2024</p>
+        <p>GPA 3.9 / 4.0.</p>
+      </div>
+    </section>
+
+    <section id="awards">
+      <h2>Honors and skills</h2>
+      <ul class="plain">
+        <li>Outstanding Departmental Student Award, Xidian University, 2023</li>
+        <li>First Prize, Chinese College Student Mathematical Modeling Competition, 2022</li>
+        <li>First-Class Scholarship, Xidian University, 2021</li>
+      </ul>
+      <dl class="dl" style="margin-top:1.3rem">
+        <dt>Training</dt>
+        <dd>SFT, offline RL, RLHF, agent post-training, tool-use agents, MCP</dd>
+        <dt>Stack</dt>
+        <dd>PyTorch, Transformers, DeepSpeed, verl, Python, C++, Linux</dd>
+      </dl>
+
+      <!-- 开始审稿之后加上这块：
+      <h2 style="margin-top:2.6rem">Academic service</h2>
+      <p>Reviewer: NeurIPS 2026, ICLR 2026, ICML 2026.</p>
+      -->
+    </section>
+
+  </main>
+
+  <footer>Last updated September 2026 &nbsp;·&nbsp; <a href="mailto:zhiyi.lyu@ntu.edu.sg">zhiyi.lyu [at] ntu.edu.sg</a></footer>
+</div>
+
+<script>
+const links = [...document.querySelectorAll('nav a')];
+const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+const seen = new Set();
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => e.isIntersecting ? seen.add(e.target.id) : seen.delete(e.target.id));
+  const active = [...map.keys()].find(id => seen.has(id));
+  links.forEach(a => a.removeAttribute('aria-current'));
+  if (active) map.get(active).setAttribute('aria-current', 'true');
+}, { rootMargin: '-8% 0px -70% 0px' });
+document.querySelectorAll('section[id]').forEach(s => io.observe(s));
+</script>
+</body>
+</html>
