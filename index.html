@@ -48,7 +48,7 @@ img{max-width:100%;display:block}
 
 .page{
   max-width:1120px;margin:0 auto;
-  padding:clamp(2.5rem,6vw,5rem) clamp(1.3rem,5vw,3rem) 5rem;
+  padding:clamp(2.5rem,6vw,5rem) clamp(1.3rem,5vw,3rem) 1.5rem;
   display:grid;grid-template-columns:250px minmax(0,1fr);
   gap:clamp(2.2rem,5vw,4.5rem);align-items:start;
 }
@@ -132,7 +132,8 @@ p:last-child{margin-bottom:0}
 .dl dd{margin:0}
 
 footer{
-  grid-column:1/-1;margin-top:1.5rem;padding-top:1.3rem;
+  max-width:1120px;margin:0 auto;
+  padding:1.3rem clamp(1.3rem,5vw,3rem) 2rem;
   border-top:1px solid var(--rule);font-size:.82rem;color:var(--faint);
 }
 
@@ -358,8 +359,9 @@ html{scroll-behavior:smooth}
 
   </main>
 
-  <footer>Last updated September 2026 &nbsp;·&nbsp; <a href="mailto:zhiyi.lyu@ntu.edu.sg">zhiyi.lyu [at] ntu.edu.sg</a></footer>
 </div>
+
+<footer>Last updated September 2026 &nbsp;·&nbsp; <a href="mailto:zhiyi.lyu@ntu.edu.sg">zhiyi.lyu [at] ntu.edu.sg</a></footer>
 
 <script>
 const links = [...document.querySelectorAll('nav a')];
